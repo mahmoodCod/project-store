@@ -3,13 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ShoppingCart, Search, Menu, X, User } from 'lucide-react';
-import AuthModal from './AuthModal';
 import UserMenu from './UserMenu';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartCount] = useState(0);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [user, setUser] = useState<{
     name: string;
     email: string;
@@ -30,7 +28,7 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">
               صفحه اصلی
             </Link>
-            <Link href="/products" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/shop/products" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">
               محصولات
             </Link>
             <Link href="/about" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">
@@ -63,13 +61,20 @@ export default function Header() {
                 onLogout={() => setUser(null)} 
               />
             ) : (
-              <button 
-                onClick={() => setIsAuthModalOpen(true)}
-                className="p-2 text-gray-700 hover:text-indigo-600"
-                aria-label="ورود یا ثبت‌نام"
-              >
-                <User className="h-6 w-6" />
-              </button>
+              <div className="flex items-center space-x-2 space-x-reverse">
+                <Link 
+                  href="/auth/login"
+                  className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  ورود
+                </Link>
+                <Link 
+                  href="/auth/register"
+                  className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                >
+                  ثبت‌نام
+                </Link>
+              </div>
             )}
             
             <button className="relative p-2 text-gray-700 hover:text-indigo-600" aria-label="سبد خرید">
@@ -92,12 +97,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Auth Modal */}
-        <AuthModal 
-          isOpen={isAuthModalOpen} 
-          onClose={() => setIsAuthModalOpen(false)} 
-        />
-
         {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden">
@@ -105,7 +104,7 @@ export default function Header() {
               <Link href="/" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">
                 صفحه اصلی
               </Link>
-              <Link href="/products" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/shop/products" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">
                 محصولات
               </Link>
               <Link href="/about" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">
