@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# فروشگاه آنلاین - پروژه رزومه
 
-## Getting Started
+این یک پروژه فروشگاه آنلاین است که با Next.js 15، TypeScript و Tailwind CSS ساخته شده است. این پروژه به عنوان بخشی از رزومه توسعه‌دهنده طراحی شده است.
 
-First, run the development server:
+## ویژگی‌ها
 
+### 🛍️ فروشگاه کامل
+- **صفحه اصلی**: با بخش Hero، نمایش محصولات ویژه و فوتر
+- **صفحه محصولات**: با فیلترها، جستجو و نمایش در حالت‌های مختلف
+- **صفحه درباره ما**: اطلاعات شرکت و تماس
+- **طراحی ریسپانسیو**: سازگار با تمام دستگاه‌ها
+
+### 🎨 طراحی مدرن
+- **Tailwind CSS**: برای استایل‌دهی سریع و زیبا
+- **RTL Support**: پشتیبانی کامل از راست به چپ
+- **آیکون‌های Lucide**: آیکون‌های زیبا و مدرن
+- **انیمیشن‌ها**: انیمیشن‌های نرم و جذاب
+
+### ⚡ عملکرد بالا
+- **Next.js 15**: با Turbopack برای سرعت بالا
+- **TypeScript**: برای کد تمیز و قابل اعتماد
+- **کامپوننت‌های بهینه**: کامپوننت‌های قابل استفاده مجدد
+
+## تکنولوژی‌های استفاده شده
+
+- **Next.js 15.4.6** - فریم‌ورک React
+- **TypeScript 5** - زبان برنامه‌نویسی
+- **Tailwind CSS 4** - فریم‌ورک CSS
+- **Lucide React** - آیکون‌ها
+- **Headless UI** - کامپوننت‌های UI
+
+## نصب و اجرا
+
+### پیش‌نیازها
+- Node.js 18 یا بالاتر
+- npm یا yarn
+
+### مراحل نصب
+
+1. **کلون کردن پروژه**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd project-store
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **نصب وابستگی‌ها**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **اجرای پروژه در حالت توسعه**
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **باز کردن مرورگر**
+```
+http://localhost:3000
+```
 
-## Learn More
+### دستورات مفید
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# اجرای پروژه
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# ساخت پروژه برای تولید
+npm run build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# اجرای پروژه در حالت تولید
+npm run start
 
-## Deploy on Vercel
+# بررسی خطاهای کد
+npm run lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ساختار پروژه
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+project-store/
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── products/
+│   │   │   └── page.tsx
+│   │   └── about/
+│   │       └── page.tsx
+│   └── components/
+│       ├── Header.tsx
+│       ├── Hero.tsx
+│       ├── ProductGrid.tsx
+│       ├── ProductCard.tsx
+│       └── Footer.tsx
+├── public/
+├── package.json
+└── README.md
+```
+
+## کامپوننت‌های اصلی
+
+### Header
+- ناوبری اصلی
+- جستجو
+- سبد خرید
+- منوی موبایل
+
+### Hero
+- بخش جذاب صفحه اصلی
+- دکمه‌های CTA
+- طراحی گرادیانت
+
+### ProductGrid
+- نمایش محصولات
+- فیلترها و جستجو
+- مرتب‌سازی
+- حالت‌های نمایش مختلف
+
+### ProductCard
+- کارت محصول
+- اطلاعات قیمت و امتیاز
+- دکمه‌های عملیات
+- حالت‌های مختلف نمایش
+
+### Footer
+- اطلاعات تماس
+- لینک‌های مفید
+- شبکه‌های اجتماعی
+
+## ویژگی‌های فنی
+
+### RTL Support
+- پشتیبانی کامل از راست به چپ
+- فونت فارسی
+- اعداد فارسی
+
+### Responsive Design
+- موبایل اول
+- تبلت
+- دسکتاپ
+
+### Performance
+- تصاویر بهینه
+- کامپوننت‌های lazy
+- کد تمیز و بهینه
+
+## آینده پروژه
+
+### ویژگی‌های پیشنهادی
+- [ ] سیستم احراز هویت
+- [ ] سبد خرید کامل
+- [ ] سیستم پرداخت
+- [ ] پنل ادمین
+- [ ] API Backend
+- [ ] دیتابیس
+- [ ] سیستم نظرات
+- [ ] سیستم تخفیف
+
+## مشارکت
+
+این پروژه برای نمایش مهارت‌های توسعه‌دهنده طراحی شده است. اگر می‌خواهید مشارکت کنید:
+
+1. Fork کنید
+2. Branch جدید بسازید
+3. تغییرات را commit کنید
+4. Pull Request ارسال کنید
+
+## لایسنس
+
+این پروژه تحت لایسنس MIT منتشر شده است.
+
+## تماس
+
+برای سوالات و پیشنهادات:
+- ایمیل: info@mystore.ir
+- تلفن: ۰۲۱-۱۲۳۴۵۶۷۸
+
+---
+
+**نکته**: این پروژه صرفاً برای نمایش مهارت‌های برنامه‌نویسی طراحی شده و جنبه تجاری ندارد.
