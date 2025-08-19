@@ -36,7 +36,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-indigo-600 transition-colors"
+        className="flex items-center space-x-2 space-x-reverse text-gray-800 hover:text-indigo-600 transition-colors"
       >
         <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
           {user.avatar ? (
@@ -66,7 +66,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
             <div className="py-1">
               <Link
                 href="/profile"
-                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <User className="h-4 w-4 ml-3" />
@@ -75,7 +75,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
               
               <Link
                 href="/orders"
-                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Package className="h-4 w-4 ml-3" />
@@ -84,7 +84,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
               
               <Link
                 href="/wishlist"
-                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Heart className="h-4 w-4 ml-3" />
@@ -93,7 +93,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
               
               <Link
                 href="/cart"
-                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <ShoppingBag className="h-4 w-4 ml-3" />
@@ -102,7 +102,7 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
               
               <Link
                 href="/settings"
-                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Settings className="h-4 w-4 ml-3" />

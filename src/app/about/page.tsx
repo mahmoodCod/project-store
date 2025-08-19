@@ -1,8 +1,12 @@
-import { Users, Award, Truck, Shield, Phone, Mail, MapPin } from 'lucide-react';
+import { Users, Award, Truck, Shield } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
+      <main>
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -91,45 +95,8 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-
-      {/* Contact Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">تماس با ما</h2>
-            <p className="text-lg text-gray-600">ما آماده پاسخگویی به سوالات شما هستیم</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-indigo-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Phone className="h-8 w-8 text-indigo-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">تلفن تماس</h3>
-              <p className="text-gray-600">۰۲۱-۱۲۳۴۵۶۷۸</p>
-              <p className="text-gray-600">شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-indigo-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Mail className="h-8 w-8 text-indigo-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">ایمیل</h3>
-              <p className="text-gray-600">info@mystore.ir</p>
-              <p className="text-gray-600">support@mystore.ir</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-indigo-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <MapPin className="h-8 w-8 text-indigo-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">آدرس</h3>
-              <p className="text-gray-600">تهران، خیابان ولیعصر</p>
-              <p className="text-gray-600">پلاک ۱۲۳، طبقه ۲</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 } 

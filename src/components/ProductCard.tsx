@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ShoppingCart, Heart, Star } from 'lucide-react';
+import Link from 'next/link';
 
 interface Product {
   id: number;
@@ -34,20 +35,22 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
 
   if (viewMode === 'list') {
     return (
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+      <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
         <div className="flex">
           <div className="flex-shrink-0">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-32 h-32 object-cover"
-            />
+            <Link href={`/product/${product.id}`} className="block">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-32 h-32 object-cover hover:scale-105 transition-transform duration-200"
+              />
+            </Link>
           </div>
           <div className="flex-1 p-4">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center space-x-2 space-x-reverse mb-2">
-                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                  <span className="text-xs text-gray-700 bg-gray-100 px-2 py-1 rounded">
                     {product.category}
                   </span>
                   {product.isNew && (
@@ -62,9 +65,11 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                   )}
                 </div>
                 
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {product.name}
-                </h3>
+                <Link href={`/product/${product.id}`} className="block">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors">
+                    {product.name}
+                  </h3>
+                </Link>
 
                 <div className="flex items-center mb-3">
                   <div className="flex items-center">
@@ -79,9 +84,9 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-500 mr-2">
-                    ({product.reviews})
-                  </span>
+                            <span className="text-sm text-gray-700 mr-2">
+            ({product.reviews})
+          </span>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -90,7 +95,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                       {formatPrice(product.price)} تومان
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-gray-500 line-through">
+                      <span className="text-sm text-gray-600 line-through">
                         {formatPrice(product.originalPrice)}
                       </span>
                     )}
@@ -99,7 +104,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                   <div className="flex items-center space-x-2 space-x-reverse">
                     <button
                       onClick={toggleFavorite}
-                      className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                      className="p-2 text-gray-400 hover:text-red-500 transition-all duration-200 hover:bg-red-50 rounded-lg"
                       aria-label="افزودن به علاقه‌مندی‌ها"
                     >
                       <Heart 
@@ -108,7 +113,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                         }`} 
                       />
                     </button>
-                    <button className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200 flex items-center space-x-2 space-x-reverse">
+                    <button className="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-all duration-200 flex items-center space-x-2 space-x-reverse transform hover:scale-105 shadow-md hover:shadow-lg font-medium">
                       <ShoppingCart className="h-4 w-4" />
                       <span>افزودن</span>
                     </button>
@@ -123,13 +128,15 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
       <div className="relative">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-48 object-cover"
-        />
+        <Link href={`/product/${product.id}`} className="block">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover hover:scale-105 transition-transform duration-200"
+          />
+        </Link>
         {product.isNew && (
           <span className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
             جدید
@@ -142,7 +149,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
         )}
         <button
           onClick={toggleFavorite}
-          className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-md hover:bg-gray-50"
+          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-red-50 transition-all duration-200 hover:scale-110"
           aria-label="افزودن به علاقه‌مندی‌ها"
         >
           <Heart 
@@ -155,14 +162,16 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
 
       <div className="p-4">
         <div className="flex items-center mb-2">
-          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+          <span className="text-xs text-gray-700 bg-gray-100 px-2 py-1 rounded">
             {product.category}
           </span>
         </div>
         
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          {product.name}
-        </h3>
+        <Link href={`/product/${product.id}`} className="block">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors">
+            {product.name}
+          </h3>
+        </Link>
 
         <div className="flex items-center mb-3">
           <div className="flex items-center">
@@ -177,7 +186,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
               />
             ))}
           </div>
-          <span className="text-sm text-gray-500 mr-2">
+          <span className="text-sm text-gray-700 mr-2">
             ({product.reviews})
           </span>
         </div>
@@ -188,14 +197,14 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
               {formatPrice(product.price)} تومان
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className="text-sm text-gray-600 line-through">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
           </div>
         </div>
 
-        <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center space-x-2 space-x-reverse">
+        <button className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse transform hover:scale-105 shadow-md hover:shadow-lg font-medium">
           <ShoppingCart className="h-5 w-5" />
           <span>افزودن به سبد خرید</span>
         </button>

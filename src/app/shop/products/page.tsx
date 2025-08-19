@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { Filter, Search, Grid, List } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const categories = [
   { id: 'all', name: 'همه محصولات' },
@@ -121,15 +123,17 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <Header />
+      <main>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">محصولات</h1>
-          <p className="text-gray-600">مجموعه‌ای از بهترین محصولات را مشاهده کنید</p>
+          <p className="text-gray-700">مجموعه‌ای از بهترین محصولات را مشاهده کنید</p>
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
@@ -141,17 +145,18 @@ export default function ProductsPage() {
                 placeholder="جستجو در محصولات..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pr-10 pl-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                className="block w-full pr-10 pl-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:placeholder-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm"
               />
             </div>
 
             {/* Category Filter */}
             <div className="flex items-center space-x-4 space-x-reverse">
-              <Filter className="h-5 w-5 text-gray-400" />
+              <Filter className="h-5 w-5 text-indigo-500" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                className="border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
+                aria-label="انتخاب دسته‌بندی"
               >
                 {categories.map(category => (
                   <option key={category.id} value={category.id}>
@@ -163,11 +168,12 @@ export default function ProductsPage() {
 
             {/* Sort */}
             <div className="flex items-center space-x-4 space-x-reverse">
-              <span className="text-sm text-gray-500">مرتب‌سازی:</span>
+              <span className="text-sm text-gray-700 font-medium">مرتب‌سازی:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                className="border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
+                aria-label="مرتب‌سازی محصولات"
               >
                 <option value="name">نام</option>
                 <option value="price-low">قیمت (کم به زیاد)</option>
@@ -177,13 +183,13 @@ export default function ProductsPage() {
             </div>
 
             {/* View Mode */}
-            <div className="flex items-center space-x-2 space-x-reverse">
+            <div className="flex items-center space-x-2 space-x-reverse bg-gray-50 p-1 rounded-lg">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-md ${
+                className={`p-2 rounded-md transition-all duration-200 ${
                   viewMode === 'grid' 
-                    ? 'bg-indigo-100 text-indigo-600' 
-                    : 'text-gray-400 hover:text-gray-600'
+                    ? 'bg-white text-indigo-600 shadow-md' 
+                    : 'text-gray-500 hover:text-indigo-600 hover:bg-white'
                 }`}
                 aria-label="نمایش شبکه‌ای"
               >
@@ -191,10 +197,10 @@ export default function ProductsPage() {
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-md ${
+                className={`p-2 rounded-md transition-all duration-200 ${
                   viewMode === 'list' 
-                    ? 'bg-indigo-100 text-indigo-600' 
-                    : 'text-gray-400 hover:text-gray-600'
+                    ? 'bg-white text-indigo-600 shadow-md' 
+                    : 'text-gray-500 hover:text-indigo-600 hover:bg-white'
                 }`}
                 aria-label="نمایش لیستی"
               >
@@ -206,7 +212,7 @@ export default function ProductsPage() {
 
         {/* Results Count */}
         <div className="mb-6">
-          <p className="text-gray-600">
+          <p className="text-gray-700">
             {sortedProducts.length} محصول یافت شد
           </p>
         </div>
@@ -228,10 +234,12 @@ export default function ProductsPage() {
 
         {sortedProducts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">محصولی یافت نشد</p>
+            <p className="text-gray-600 text-lg">محصولی یافت نشد</p>
           </div>
         )}
       </div>
+      </main>
+      <Footer />
     </div>
   );
 } 
