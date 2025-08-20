@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
 import "./globals.css";
-
-const vazirmatn = Vazirmatn({ 
-  subsets: ["arabic"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-vazirmatn",
-});
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export const metadata: Metadata = {
   title: "فروشگاه من - بهترین محصولات با بهترین قیمت",
@@ -20,7 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirmatn.variable} font-sans`}>
+      <body className="font-sans">
+        <LoadingSpinner />
         {children}
       </body>
     </html>

@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { ShoppingCart, Heart, Star, Truck, Shield, ArrowLeft, Share2, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingCart, Heart, Star, Truck, Shield, ArrowLeft, Share2, Eye, X } from 'lucide-react';
 import Link from 'next/link';
+import DiscountBadge from './DiscountBadge';
+import ClientOnly from './ClientOnly';
 
 interface Product {
   id: number;
@@ -15,6 +17,10 @@ interface Product {
   category: string;
   isNew?: boolean;
   isSale?: boolean;
+  discount?: {
+    percentage: number;
+    endTime: Date;
+  };
   description?: string;
   features?: string[];
   specifications?: Record<string, string>;
@@ -30,6 +36,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
   const [activeTab, setActiveTab] = useState('description');
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fa-IR').format(price);
@@ -42,14 +49,33 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     return 0;
   };
 
+  // Handle escape key to close modal
+  React.useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsImageModalOpen(false);
+      }
+    };
+
+    if (isImageModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isImageModalOpen]);
+
   const images = product.images || [product.image];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <div className="mb-8">
-          <nav className="flex items-center space-x-2 space-x-reverse text-sm text-gray-600">
+        <div className="mb-6">
+          <nav className="flex items-center space-x-2 space-x-reverse text-xs text-gray-600">
             <Link href="/" className="hover:text-indigo-600 transition-colors">صفحه اصلی</Link>
             <span>/</span>
             <Link href="/shop/products" className="hover:text-indigo-600 transition-colors">محصولات</Link>
@@ -65,17 +91,23 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <img
                 src={images[selectedImage]}
                 alt={product.name}
-                className="w-full h-96 object-cover rounded-lg shadow-lg"
+                className="w-full h-96 object-cover rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => setIsImageModalOpen(true)}
               />
               {product.isNew && (
                 <span className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                   جدید
                 </span>
               )}
-              {product.isSale && (
-                <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  {calculateDiscount()}% تخفیف
-                </span>
+              {product.discount && (
+                <div className="absolute top-4 left-4">
+                  <ClientOnly>
+                    <DiscountBadge 
+                      discount={product.discount.percentage} 
+                      endTime={product.discount.endTime}
+                    />
+                  </ClientOnly>
+                </div>
               )}
             </div>
             
@@ -121,7 +153,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 )}
               </div>
               
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-xl font-bold text-gray-900 mb-4">{product.name}</h1>
               
               <div className="flex items-center space-x-4 space-x-reverse mb-4">
                 <div className="flex items-center">
@@ -143,17 +175,17 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* Price */}
             <div className="space-y-2">
               <div className="flex items-center space-x-4 space-x-reverse">
-                <span className="text-3xl font-bold text-gray-900">
+                <span className="text-xl font-bold text-gray-900">
                   {formatPrice(product.price)} تومان
                 </span>
                 {product.originalPrice && (
-                  <span className="text-xl text-gray-500 line-through">
+                  <span className="text-base text-gray-500 line-through">
                     {formatPrice(product.originalPrice)}
                   </span>
                 )}
               </div>
               {product.isSale && (
-                <p className="text-green-600 font-medium">
+                <p className="text-green-600 font-medium text-sm">
                   {calculateDiscount()}% صرفه‌جویی
                 </p>
               )}
@@ -221,12 +253,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
 
         {/* Tabs */}
-        <div className="mt-16">
+        <div className="mt-12">
           <div className="border-b border-gray-200">
-            <nav className="flex space-x-8 space-x-reverse">
+            <nav className="flex space-x-6 space-x-reverse">
               <button
                 onClick={() => setActiveTab('description')}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 px-1 border-b-2 font-medium text-xs ${
                   activeTab === 'description'
                     ? 'border-indigo-500 text-indigo-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -236,7 +268,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </button>
               <button
                 onClick={() => setActiveTab('specifications')}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 px-1 border-b-2 font-medium text-xs ${
                   activeTab === 'specifications'
                     ? 'border-indigo-500 text-indigo-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -246,7 +278,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </button>
               <button
                 onClick={() => setActiveTab('reviews')}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 px-1 border-b-2 font-medium text-xs ${
                   activeTab === 'reviews'
                     ? 'border-indigo-500 text-indigo-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -257,17 +289,17 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </nav>
           </div>
 
-          <div className="py-8">
+          <div className="py-6">
             {activeTab === 'description' && (
-              <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-gray-900">توضیحات محصول</h3>
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">توضیحات محصول</h3>
                 <p className="text-gray-600 leading-relaxed">
                   {product.description || `این ${product.name} یکی از بهترین محصولات در دسته‌بندی ${product.category} است که با کیفیت بالا و قیمت مناسب ارائه می‌شود. این محصول با استفاده از بهترین مواد اولیه و تکنولوژی روز دنیا تولید شده و می‌تواند نیازهای شما را به بهترین شکل برآورده کند.`}
                 </p>
                 
                 {product.features && (
                   <div>
-                    <h4 className="text-lg font-medium text-gray-900 mb-3">ویژگی‌های کلیدی</h4>
+                    <h4 className="text-base font-medium text-gray-900 mb-3">ویژگی‌های کلیدی</h4>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li key={index} className="flex items-start space-x-2 space-x-reverse">
@@ -282,8 +314,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
 
             {activeTab === 'specifications' && (
-              <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-gray-900">مشخصات فنی</h3>
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">مشخصات فنی</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {product.specifications ? (
                     Object.entries(product.specifications).map(([key, value]) => (
@@ -300,9 +332,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
 
             {activeTab === 'reviews' && (
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-gray-900">نظرات کاربران</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">نظرات کاربران</h3>
                   <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition-colors">
                     نوشتن نظر
                   </button>
@@ -360,6 +392,84 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {isImageModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2"
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <div 
+            className="relative w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute top-2 right-2 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+              aria-label="بستن"
+            >
+              <X className="h-6 w-6 text-gray-600" />
+            </button>
+
+            {/* Navigation Buttons */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={() => setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1)}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors"
+                  aria-label="تصویر قبلی"
+                >
+                  <ArrowLeft className="h-6 w-6 text-gray-600" />
+                </button>
+                <button
+                  onClick={() => setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1)}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors"
+                  aria-label="تصویر بعدی"
+                >
+                  <ArrowLeft className="h-6 w-6 text-gray-600 rotate-180" />
+                </button>
+              </>
+            )}
+
+            {/* Main Image */}
+            <img
+              src={images[selectedImage]}
+              alt={product.name}
+              className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-lg"
+            />
+
+            {/* Image Counter */}
+            {images.length > 1 && (
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+                {selectedImage + 1} از {images.length}
+              </div>
+            )}
+
+            {/* Thumbnail Navigation */}
+            {images.length > 1 && (
+              <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-2 space-x-reverse">
+                {images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`w-10 h-10 rounded-lg overflow-hidden border-2 transition-all ${
+                      selectedImage === index ? 'border-white' : 'border-gray-300'
+                    }`}
+                    aria-label={`تصویر ${index + 1}`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${product.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 } 

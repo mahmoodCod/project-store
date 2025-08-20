@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Heart, Star, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Heart, Star, ArrowLeft, ArrowRight } from 'lucide-react';
 import ProductCard from './ProductCard';
 
 interface Product {
@@ -15,6 +15,10 @@ interface Product {
   category: string;
   isNew?: boolean;
   isSale?: boolean;
+  discount?: {
+    percentage: number;
+    endTime: Date;
+  };
 }
 
 interface ProductGridProps {
@@ -32,7 +36,10 @@ const products: Product[] = [
     rating: 4.8,
     reviews: 1247,
     category: "گوشی موبایل",
-    isSale: true
+    discount: {
+      percentage: 15,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 2,
@@ -76,7 +83,10 @@ const products: Product[] = [
     rating: 4.8,
     reviews: 124,
     category: "لپ تاپ",
-    isSale: true
+    discount: {
+      percentage: 20,
+      endTime: new Date('2024-12-25T23:59:59')
+    }
   },
   {
     id: 6,
@@ -98,7 +108,10 @@ const products: Product[] = [
     rating: 4.7,
     reviews: 2156,
     category: "هدفون",
-    isSale: true
+    discount: {
+      percentage: 25,
+      endTime: new Date('2024-12-20T23:59:59')
+    }
   },
   {
     id: 8,
@@ -129,7 +142,10 @@ const products: Product[] = [
     rating: 4.6,
     reviews: 1567,
     category: "ساعت هوشمند",
-    isSale: true
+    discount: {
+      percentage: 18,
+      endTime: new Date('2024-12-28T23:59:59')
+    }
   },
   {
     id: 11,
@@ -160,7 +176,10 @@ const products: Product[] = [
     rating: 4.9,
     reviews: 203,
     category: "دوربین",
-    isSale: true
+    discount: {
+      percentage: 12,
+      endTime: new Date('2024-12-30T23:59:59')
+    }
   },
   {
     id: 14,
@@ -299,7 +318,7 @@ export default function ProductGrid({ selectedCategory }: ProductGridProps) {
                 </button>
                 
                 {/* دکمه اسکرول راست */}
-                <button 
+                <button
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 md:hover:bg-white text-gray-600 md:hover:text-gray-900 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity md:hidden"
                   aria-label="اسکرول به راست"
                 >
@@ -313,7 +332,7 @@ export default function ProductGrid({ selectedCategory }: ProductGridProps) {
                   {categoryProducts.map((product) => (
                     <div key={product.id} className="flex-shrink-0 w-64 md:w-auto">
                       <ProductCard product={product} viewMode="grid" />
-                    </div>
+              </div>
                   ))}
                 </div>
                 

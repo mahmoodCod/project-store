@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ShoppingCart, Heart, Star } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import Link from 'next/link';
+import DiscountBadge from './DiscountBadge';
+import ClientOnly from './ClientOnly';
 
 interface Product {
   id: number;
@@ -15,6 +17,10 @@ interface Product {
   category: string;
   isNew?: boolean;
   isSale?: boolean;
+  discount?: {
+    percentage: number;
+    endTime: Date;
+  };
 }
 
 interface ProductCardProps {
@@ -35,14 +41,16 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
 
   if (viewMode === 'list') {
     return (
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+      <div className={`bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border ${
+        product.discount ? 'border-red-300 shadow-red-100' : 'border-gray-100'
+      }`}>
         <div className="flex">
           <div className="flex-shrink-0">
             <Link href={`/product/${product.id}`} className="block">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-32 h-32 object-cover hover:scale-105 transition-transform duration-200"
+                className="w-32 h-32 object-cover transition-transform duration-200"
               />
             </Link>
           </div>
@@ -58,15 +66,18 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                       جدید
                     </span>
                   )}
-                  {product.isSale && (
-                    <span className="text-xs bg-red-500 text-white px-2 py-1 rounded">
-                      تخفیف
-                    </span>
+                  {product.discount && (
+                    <ClientOnly>
+                      <DiscountBadge 
+                        discount={product.discount.percentage} 
+                        endTime={product.discount.endTime}
+                      />
+                    </ClientOnly>
                   )}
                 </div>
                 
                 <Link href={`/product/${product.id}`} className="block">
-                                  <h3 className="text-base font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors line-clamp-2">
+                                  <h3 className="text-base font-semibold text-gray-900 mb-2 transition-colors line-clamp-2">
                   {product.name}
                 </h3>
                 </Link>
@@ -102,20 +113,16 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                   </div>
                   
                   <div className="flex items-center space-x-2 space-x-reverse">
-                                      <button
-                    onClick={toggleFavorite}
-                    className="p-2 text-gray-400 md:hover:text-red-500 transition-all duration-200 md:hover:bg-red-50 rounded-lg"
-                    aria-label="افزودن به علاقه‌مندی‌ها"
-                  >
+                    <button
+                      onClick={toggleFavorite}
+                      className="p-2 text-gray-400 md:hover:text-red-500 transition-all duration-200 md:hover:bg-red-50 rounded-lg"
+                      aria-label="افزودن به علاقه‌مندی‌ها"
+                    >
                       <Heart 
                         className={`h-5 w-5 ${
                           isFavorite ? 'text-red-500 fill-current' : ''
                         }`} 
                       />
-                    </button>
-                    <button className="bg-indigo-600 text-white py-2 px-4 rounded-lg md:hover:bg-indigo-700 transition-all duration-200 flex items-center space-x-2 space-x-reverse transform md:hover:scale-105 shadow-md md:hover:shadow-lg font-medium">
-                      <ShoppingCart className="h-4 w-4" />
-                      <span>افزودن</span>
                     </button>
                   </div>
                 </div>
@@ -128,28 +135,35 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform md:hover:-translate-y-1 border border-gray-100 h-full flex flex-col">
+    <div className={`bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 border h-full flex flex-col ${
+      product.discount ? 'border-red-300 shadow-red-100' : 'border-gray-100'
+    }`}>
       <div className="relative">
         <Link href={`/product/${product.id}`} className="block">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-48 object-cover md:hover:scale-105 transition-transform duration-200"
+            className="w-full h-48 object-cover transition-transform duration-200"
           />
         </Link>
         {product.isNew && (
-          <span className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+          <span className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
             جدید
           </span>
         )}
-        {product.isSale && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-            تخفیف
-          </span>
+        {product.discount && (
+          <div className="absolute top-2 left-2">
+            <ClientOnly>
+              <DiscountBadge 
+                discount={product.discount.percentage} 
+                endTime={product.discount.endTime}
+              />
+            </ClientOnly>
+          </div>
         )}
         <button
           onClick={toggleFavorite}
-          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg md:hover:bg-red-50 transition-all duration-200 md:hover:scale-110"
+          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg md:hover:bg-red-50 transition-all duration-200"
           aria-label="افزودن به علاقه‌مندی‌ها"
         >
           <Heart 
@@ -168,7 +182,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
         </div>
         
         <Link href={`/product/${product.id}`} className="block">
-          <h3 className="text-sm font-semibold text-gray-900 mb-2 md:hover:text-indigo-600 transition-colors line-clamp-2">
+          <h3 className="text-sm font-semibold text-gray-900 mb-2 transition-colors line-clamp-2">
             {product.name}
           </h3>
         </Link>
@@ -204,10 +218,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
           </div>
         </div>
 
-        <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg md:hover:bg-indigo-700 transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse transform md:hover:scale-105 shadow-md md:hover:shadow-lg font-medium mt-auto">
-          <ShoppingCart className="h-4 w-4" />
-          <span>افزودن به سبد خرید</span>
-        </button>
+
       </div>
     </div>
   );
