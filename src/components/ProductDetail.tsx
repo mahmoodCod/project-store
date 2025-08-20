@@ -17,7 +17,7 @@ interface Product {
   isSale?: boolean;
   description?: string;
   features?: string[];
-  specifications?: { [key: string]: string };
+  specifications?: Record<string, string>;
   images?: string[];
 }
 

@@ -32,7 +32,7 @@ const products = [
       "سیستم عامل": "Windows 11",
       "وزن": "2.3 کیلوگرم",
       "باتری": "6 سلول 86Wh"
-    },
+    } as Record<string, string>,
     images: [
       "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop",
@@ -65,7 +65,7 @@ const products = [
       "وزن": "250 گرم",
       "فرکانس": "20Hz-20kHz",
       "امپدانس": "32 اهم"
-    }
+    } as Record<string, string>
   },
   {
     id: 3,
@@ -93,18 +93,19 @@ const products = [
       "مقاومت آب": "5ATM",
       "وزن": "30 گرم",
       "سیستم عامل": "Wear OS"
-    }
+    } as Record<string, string>
   }
 ];
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = products.find(p => p.id === parseInt(params.id));
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+  const product = products.find(p => p.id === parseInt(id));
 
   if (!product) {
     return (

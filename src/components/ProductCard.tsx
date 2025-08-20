@@ -66,9 +66,9 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                 </div>
                 
                 <Link href={`/product/${product.id}`} className="block">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors">
-                    {product.name}
-                  </h3>
+                                  <h3 className="text-base font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors line-clamp-2">
+                  {product.name}
+                </h3>
                 </Link>
 
                 <div className="flex items-center mb-3">
@@ -91,7 +91,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2 space-x-reverse">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-base font-bold text-gray-900">
                       {formatPrice(product.price)} تومان
                     </span>
                     {product.originalPrice && (
@@ -102,18 +102,18 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
                   </div>
                   
                   <div className="flex items-center space-x-2 space-x-reverse">
-                    <button
-                      onClick={toggleFavorite}
-                      className="p-2 text-gray-400 hover:text-red-500 transition-all duration-200 hover:bg-red-50 rounded-lg"
-                      aria-label="افزودن به علاقه‌مندی‌ها"
-                    >
+                                      <button
+                    onClick={toggleFavorite}
+                    className="p-2 text-gray-400 md:hover:text-red-500 transition-all duration-200 md:hover:bg-red-50 rounded-lg"
+                    aria-label="افزودن به علاقه‌مندی‌ها"
+                  >
                       <Heart 
                         className={`h-5 w-5 ${
                           isFavorite ? 'text-red-500 fill-current' : ''
                         }`} 
                       />
                     </button>
-                    <button className="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-all duration-200 flex items-center space-x-2 space-x-reverse transform hover:scale-105 shadow-md hover:shadow-lg font-medium">
+                    <button className="bg-indigo-600 text-white py-2 px-4 rounded-lg md:hover:bg-indigo-700 transition-all duration-200 flex items-center space-x-2 space-x-reverse transform md:hover:scale-105 shadow-md md:hover:shadow-lg font-medium">
                       <ShoppingCart className="h-4 w-4" />
                       <span>افزودن</span>
                     </button>
@@ -128,13 +128,13 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform md:hover:-translate-y-1 border border-gray-100 h-full flex flex-col">
       <div className="relative">
         <Link href={`/product/${product.id}`} className="block">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-48 object-cover hover:scale-105 transition-transform duration-200"
+            className="w-full h-48 object-cover md:hover:scale-105 transition-transform duration-200"
           />
         </Link>
         {product.isNew && (
@@ -149,7 +149,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
         )}
         <button
           onClick={toggleFavorite}
-          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-red-50 transition-all duration-200 hover:scale-110"
+          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg md:hover:bg-red-50 transition-all duration-200 md:hover:scale-110"
           aria-label="افزودن به علاقه‌مندی‌ها"
         >
           <Heart 
@@ -168,7 +168,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
         </div>
         
         <Link href={`/product/${product.id}`} className="block">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors">
+          <h3 className="text-sm font-semibold text-gray-900 mb-2 md:hover:text-indigo-600 transition-colors line-clamp-2">
             {product.name}
           </h3>
         </Link>
@@ -193,7 +193,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2 space-x-reverse">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-base font-bold text-gray-900">
               {formatPrice(product.price)} تومان
             </span>
             {product.originalPrice && (
@@ -204,8 +204,8 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
           </div>
         </div>
 
-        <button className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse transform hover:scale-105 shadow-md hover:shadow-lg font-medium">
-          <ShoppingCart className="h-5 w-5" />
+        <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg md:hover:bg-indigo-700 transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse transform md:hover:scale-105 shadow-md md:hover:shadow-lg font-medium mt-auto">
+          <ShoppingCart className="h-4 w-4" />
           <span>افزودن به سبد خرید</span>
         </button>
       </div>
