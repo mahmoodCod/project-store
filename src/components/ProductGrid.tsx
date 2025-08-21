@@ -34,7 +34,7 @@ const products: Product[] = [
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 1247,
+    reviews: 156,
     category: "گوشی موبایل",
     discount: {
       percentage: 15,
@@ -48,7 +48,7 @@ const products: Product[] = [
     originalPrice: 72000000,
     image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 892,
+    reviews: 89,
     category: "گوشی موبایل",
     isNew: true,
     discount: {
@@ -62,7 +62,7 @@ const products: Product[] = [
     price: 28000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 567,
+    reviews: 67,
     category: "گوشی موبایل"
   },
   
@@ -74,7 +74,7 @@ const products: Product[] = [
     originalPrice: 95000000,
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 892,
+    reviews: 89,
     category: "لپ تاپ",
     isNew: true,
     discount: {
@@ -89,7 +89,7 @@ const products: Product[] = [
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 124,
+    reviews: 24,
     category: "لپ تاپ",
     discount: {
       percentage: 20,
@@ -102,7 +102,7 @@ const products: Product[] = [
     price: 38000000,
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 234,
+    reviews: 34,
     category: "لپ تاپ"
   },
   
@@ -114,7 +114,7 @@ const products: Product[] = [
     originalPrice: 10500000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 2156,
+    reviews: 156,
     category: "هدفون",
     discount: {
       percentage: 25,
@@ -127,7 +127,7 @@ const products: Product[] = [
     price: 6500000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 1890,
+    reviews: 90,
     category: "هدفون"
   },
   {
@@ -136,7 +136,7 @@ const products: Product[] = [
     price: 7200000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.5,
-    reviews: 1234,
+    reviews: 134,
     category: "هدفون"
   },
   
@@ -148,7 +148,7 @@ const products: Product[] = [
     originalPrice: 22000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 1567,
+    reviews: 167,
     category: "ساعت هوشمند",
     discount: {
       percentage: 18,
@@ -161,7 +161,7 @@ const products: Product[] = [
     price: 12000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.4,
-    reviews: 890,
+    reviews: 90,
     category: "ساعت هوشمند"
   },
   {
@@ -170,7 +170,7 @@ const products: Product[] = [
     price: 25000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 567,
+    reviews: 67,
     category: "ساعت هوشمند"
   },
   
@@ -182,7 +182,7 @@ const products: Product[] = [
     originalPrice: 95000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 203,
+    reviews: 23,
     category: "دوربین",
     discount: {
       percentage: 12,
@@ -195,7 +195,7 @@ const products: Product[] = [
     price: 72000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 345,
+    reviews: 45,
     category: "دوربین"
   },
   {
@@ -204,7 +204,7 @@ const products: Product[] = [
     price: 65000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 234,
+    reviews: 34,
     category: "دوربین"
   },
   
@@ -216,7 +216,7 @@ const products: Product[] = [
     originalPrice: 28000000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 1234,
+    reviews: 134,
     category: "کنسول بازی",
     isSale: true,
     discount: {
@@ -230,7 +230,7 @@ const products: Product[] = [
     price: 22000000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 987,
+    reviews: 87,
     category: "کنسول بازی"
   },
   {
@@ -239,7 +239,7 @@ const products: Product[] = [
     price: 8500000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.5,
-    reviews: 1567,
+    reviews: 167,
     category: "کنسول بازی"
   }
 ];

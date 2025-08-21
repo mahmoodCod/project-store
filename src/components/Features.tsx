@@ -4,7 +4,7 @@ const features = [
   {
     icon: Truck,
     title: 'ارسال رایگان',
-    description: 'برای سفارشات بالای ۵۰۰ هزار تومان',
+    description: 'برای سفارشات بالای ۵۰۰ هزار',
     color: 'text-green-600',
     bgColor: 'bg-green-100'
   },
@@ -32,7 +32,7 @@ const features = [
   {
     icon: Gift,
     title: 'هدیه رایگان',
-    description: 'هدیه با هر خرید بالای ۱ میلیون تومان',
+    description: 'هدیه با هر خرید بالای ۱ میلیون',
     color: 'text-pink-600',
     bgColor: 'bg-pink-100'
   },

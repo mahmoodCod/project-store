@@ -127,7 +127,7 @@ export default function Header() {
                             </h3>
                             <p className="text-xs text-gray-500">{product.category}</p>
                             <p className="text-sm font-bold text-gray-900">
-                              {formatPrice(product.price)} تومان
+                              {formatPrice(product.price)}
                             </p>
                           </div>
                         </Link>

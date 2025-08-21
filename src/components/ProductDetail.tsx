@@ -181,7 +181,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <div className="space-y-2">
               <div className="flex items-center space-x-4 space-x-reverse">
                 <span className="text-lg md:text-xl font-bold text-gray-900">
-                  {formatPrice(product.price)} تومان
+                  {formatPrice(product.price)}
                 </span>
                 {product.originalPrice && (
                   <span className="text-base text-gray-500 line-through">

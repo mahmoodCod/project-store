@@ -42,7 +42,7 @@ export default function AboutPage() {
                 <Truck className="h-8 w-8 text-indigo-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">ارسال سریع</h3>
-              <p className="text-gray-600">ارسال رایگان برای سفارشات بالای ۵۰۰ هزار تومان در سراسر کشور</p>
+              <p className="text-gray-600">ارسال رایگان برای سفارشات بالای ۵۰۰ هزار در سراسر کشور</p>
             </div>
 
             <div className="text-center">
@@ -297,7 +297,7 @@ export default function AboutPage() {
                 <span className="text-gray-600 mr-2">۵.۰</span>
               </div>
                               <p className="text-gray-700 mb-4">
-                  &ldquo;سایت کاربرپسند و محصولات متنوع. ارسال رایگان برای سفارشات بالای ۵۰۰ هزار تومان عالی است.&rdquo;
+                  &ldquo;سایت کاربرپسند و محصولات متنوع. ارسال رایگان برای سفارشات بالای ۵۰۰ هزار عالی است.&rdquo;
                 </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">

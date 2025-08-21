@@ -19,8 +19,20 @@ interface DiscountBannerProps {
 
 export default function DiscountBanner({ offers }: DiscountBannerProps) {
   const [currentOffer, setCurrentOffer] = useState(0);
-  const [timeLeft, setTimeLeft] = useState<number>(0);
-  const [autoRotate, setAutoRotate] = useState(false); // Disable auto rotation by default
+  const [timeLeft, setTimeLeft] = useState<number>(() => {
+    // محاسبه زمان بر اساس زمان شروع ذخیره شده
+    if (typeof window !== 'undefined') {
+      const startTime = localStorage.getItem('discountStartTime');
+      if (startTime) {
+        const globalFixedTime = 30 * 24 * 60 * 60 * 1000; // 30 روز
+        const elapsed = Date.now() - parseInt(startTime);
+        const remaining = globalFixedTime - elapsed;
+        return remaining > 0 ? remaining : globalFixedTime;
+      }
+    }
+    return 0;
+  });
+  const [autoRotate, setAutoRotate] = useState(true); // Enable auto rotation
 
   const formatTime = useCallback((ms: number) => {
     const days = Math.floor(ms / (1000 * 60 * 60 * 24));
@@ -44,25 +56,37 @@ export default function DiscountBanner({ offers }: DiscountBannerProps) {
     setCurrentOffer((prev) => (prev - 1 + offers.length) % offers.length);
   }, [offers.length]);
 
-  // Countdown timer effect
+  // Countdown timer effect - زمان کلی برای تمام تخفیف‌ها
   useEffect(() => {
     if (offers.length === 0) return;
 
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const end = new Date(offers[currentOffer]?.endTime || new Date()).getTime();
-      const difference = end - now;
-
-      if (difference <= 0) {
-        // Move to next offer if current one is expired
-        setCurrentOffer((prev) => (prev + 1) % offers.length);
-      } else {
-        setTimeLeft(difference);
+    // زمان کلی ثابت برای تمام تخفیف‌ها (مثلاً 30 روز)
+    const globalFixedTime = 30 * 24 * 60 * 60 * 1000; // 30 روز به میلی‌ثانیه
+    
+    // فقط یک بار زمان را تنظیم کن
+    if (timeLeft === 0) {
+      setTimeLeft(globalFixedTime);
+      // زمان شروع را در localStorage ذخیره کن
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('discountStartTime', Date.now().toString());
       }
-    }, 5000); // Update every 5 seconds instead of 1 second
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1000) {
+          // وقتی زمان تمام شد، زمان شروع جدید ذخیره کن
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('discountStartTime', Date.now().toString());
+          }
+          return globalFixedTime;
+        }
+        return prev - 1000;
+      });
+    }, 1000); // هر ثانیه به‌روزرسانی
 
     return () => clearInterval(timer);
-  }, [currentOffer, offers.length, offers]);
+  }, [offers.length]);
 
   // Auto rotation effect (slower)
   useEffect(() => {
@@ -70,7 +94,7 @@ export default function DiscountBanner({ offers }: DiscountBannerProps) {
 
     const rotationTimer = setInterval(() => {
       setCurrentOffer((prev) => (prev + 1) % offers.length);
-    }, 15000); // Change every 15 seconds - much slower
+    }, 5000); // Change every 5 seconds
 
     return () => clearInterval(rotationTimer);
   }, [offers.length, autoRotate]);

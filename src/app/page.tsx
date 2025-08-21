@@ -21,7 +21,7 @@ export default function Home() {
       title: "تخفیف ویژه گوشی‌های سامسونگ",
       description: "تا 15% تخفیف روی تمام گوشی‌های سامسونگ",
       discount: 15,
-      endTime: new Date('2024-12-31T23:59:59'),
+      endTime: new Date('2025-01-31T23:59:59'),
       image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
       category: "گوشی موبایل"
     },
@@ -30,7 +30,7 @@ export default function Home() {
       title: "تخفیف لپ‌تاپ‌های گیمینگ",
       description: "تا 20% تخفیف روی لپ‌تاپ‌های ASUS",
       discount: 20,
-      endTime: new Date('2024-12-25T23:59:59'),
+      endTime: new Date('2025-01-25T23:59:59'),
       image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
       category: "لپ تاپ"
     },
@@ -39,7 +39,7 @@ export default function Home() {
       title: "تخفیف هدفون‌های Sony",
       description: "تا 25% تخفیف روی هدفون‌های Sony",
       discount: 25,
-      endTime: new Date('2024-12-20T23:59:59'),
+      endTime: new Date('2025-01-20T23:59:59'),
       image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
       category: "هدفون"
     }

@@ -26,7 +26,7 @@ const products = [
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 1247,
+    reviews: 156,
     category: "گوشی موبایل",
     discount: {
       percentage: 15,
@@ -40,7 +40,7 @@ const products = [
     originalPrice: 72000000,
     image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 892,
+    reviews: 89,
     category: "گوشی موبایل",
     isNew: true,
     discount: {
@@ -54,7 +54,7 @@ const products = [
     price: 28000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 567,
+    reviews: 67,
     category: "گوشی موبایل"
   },
   {
@@ -64,7 +64,7 @@ const products = [
     originalPrice: 95000000,
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 892,
+    reviews: 89,
     category: "لپ تاپ",
     isNew: true,
     discount: {
@@ -79,7 +79,7 @@ const products = [
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 124,
+    reviews: 24,
     category: "لپ تاپ",
     discount: {
       percentage: 20,
@@ -92,7 +92,7 @@ const products = [
     price: 38000000,
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 234,
+    reviews: 34,
     category: "لپ تاپ"
   },
   {
@@ -102,7 +102,7 @@ const products = [
     originalPrice: 10500000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 2156,
+    reviews: 156,
     category: "هدفون",
     discount: {
       percentage: 25,
@@ -115,7 +115,7 @@ const products = [
     price: 6500000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 1890,
+    reviews: 90,
     category: "هدفون"
   },
   {
@@ -124,7 +124,7 @@ const products = [
     price: 7200000,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.5,
-    reviews: 1234,
+    reviews: 134,
     category: "هدفون"
   },
   {
@@ -134,7 +134,7 @@ const products = [
     originalPrice: 22000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 1567,
+    reviews: 167,
     category: "ساعت هوشمند",
     discount: {
       percentage: 18,
@@ -147,7 +147,7 @@ const products = [
     price: 12000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.4,
-    reviews: 890,
+    reviews: 90,
     category: "ساعت هوشمند"
   },
   {
@@ -156,7 +156,7 @@ const products = [
     price: 25000000,
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 567,
+    reviews: 67,
     category: "ساعت هوشمند"
   },
   {
@@ -166,7 +166,7 @@ const products = [
     originalPrice: 95000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.9,
-    reviews: 203,
+    reviews: 23,
     category: "دوربین",
     discount: {
       percentage: 12,
@@ -179,7 +179,7 @@ const products = [
     price: 72000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 156,
+    reviews: 56,
     category: "دوربین"
   },
   {
@@ -188,7 +188,7 @@ const products = [
     price: 65000000,
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.6,
-    reviews: 234,
+    reviews: 34,
     category: "دوربین"
   },
   {
@@ -198,7 +198,7 @@ const products = [
     originalPrice: 28000000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.8,
-    reviews: 1234,
+    reviews: 134,
     category: "کنسول بازی",
     isSale: true,
     discount: {
@@ -212,7 +212,7 @@ const products = [
     price: 22000000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.7,
-    reviews: 987,
+    reviews: 87,
     category: "کنسول بازی"
   },
   {
@@ -221,7 +221,7 @@ const products = [
     price: 8500000,
     image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
     rating: 4.5,
-    reviews: 1567,
+    reviews: 167,
     category: "کنسول بازی"
   }
 ];
@@ -247,7 +247,7 @@ export default function ProductsPage() {
       title: "تخفیف ویژه گوشی‌های سامسونگ",
       description: "تا 15% تخفیف روی تمام گوشی‌های سامسونگ",
       discount: 15,
-      endTime: new Date('2024-12-31T23:59:59'),
+      endTime: new Date('2025-01-31T23:59:59'),
       image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
       category: "گوشی موبایل"
     },
@@ -256,7 +256,7 @@ export default function ProductsPage() {
       title: "تخفیف لپ‌تاپ‌های گیمینگ",
       description: "تا 20% تخفیف روی لپ‌تاپ‌های ASUS",
       discount: 20,
-      endTime: new Date('2024-12-25T23:59:59'),
+      endTime: new Date('2025-01-25T23:59:59'),
       image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
       category: "لپ تاپ"
     },
@@ -265,7 +265,7 @@ export default function ProductsPage() {
       title: "تخفیف هدفون‌های Sony",
       description: "تا 25% تخفیف روی هدفون‌های Sony",
       discount: 25,
-      endTime: new Date('2024-12-20T23:59:59'),
+      endTime: new Date('2025-01-20T23:59:59'),
       image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
       category: "هدفون"
     }
@@ -311,44 +311,44 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <main>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">محصولات</h1>
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">محصولات</h1>
             <p className="text-gray-700">مجموعه‌ای از بهترین محصولات را مشاهده کنید</p>
           </div>
 
           {/* Discount Banner */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <ClientOnly>
               <DiscountBanner offers={discountOffers} />
             </ClientOnly>
         </div>
 
         {/* Filters and Search */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6 mb-6 md:mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-4 lg:space-x-reverse">
             {/* Search */}
               <div className="flex-1 relative">
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
+                <Search className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
               </div>
               <input
                 type="text"
                 placeholder="جستجو در محصولات..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                  className="block w-full pr-10 pl-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:placeholder-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm"
+                  className="block w-full pr-10 pl-3 py-2 md:py-3 border border-gray-300 rounded-lg leading-5 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:placeholder-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm"
               />
             </div>
 
             {/* Category Filter */}
             <div className="flex items-center space-x-4 space-x-reverse">
-                <Filter className="h-5 w-5 text-indigo-500" />
+                <Filter className="h-4 w-4 md:h-5 md:w-5 text-indigo-500" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
+                  className="border border-gray-300 rounded-lg px-3 md:px-4 py-2 md:py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
                   aria-label="انتخاب دسته‌بندی"
               >
                 {categories.map(category => (
@@ -365,7 +365,7 @@ export default function ProductsPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
+                  className="border border-gray-300 rounded-lg px-3 md:px-4 py-2 md:py-3 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-gray-400 shadow-sm font-medium"
                   aria-label="مرتب‌سازی محصولات"
               >
                 <option value="name">نام</option>
@@ -386,7 +386,7 @@ export default function ProductsPage() {
                 }`}
                 aria-label="نمایش شبکه‌ای"
               >
-                <Grid className="h-5 w-5" />
+                <Grid className="h-4 w-4 md:h-5 md:w-5" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
@@ -397,14 +397,14 @@ export default function ProductsPage() {
                 }`}
                 aria-label="نمایش لیستی"
               >
-                <List className="h-5 w-5" />
+                <List className="h-4 w-4 md:h-5 md:w-5" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Results Count */}
-        <div className="mb-6">
+        <div className="mb-4 md:mb-6">
             <p className="text-gray-700">
             {sortedProducts.length} محصول یافت شد
           </p>
@@ -413,7 +413,7 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <div className={
           viewMode === 'grid' 
-            ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6'
+            ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-4 lg:gap-6'
             : 'space-y-4'
         }>
           {sortedProducts.map((product) => (
