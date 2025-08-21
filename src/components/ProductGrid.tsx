@@ -50,7 +50,11 @@ const products: Product[] = [
     rating: 4.9,
     reviews: 892,
     category: "گوشی موبایل",
-    isNew: true
+    isNew: true,
+    discount: {
+      percentage: 10,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 3,
@@ -72,7 +76,11 @@ const products: Product[] = [
     rating: 4.9,
     reviews: 892,
     category: "لپ تاپ",
-    isNew: true
+    isNew: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 5,
@@ -210,7 +218,11 @@ const products: Product[] = [
     rating: 4.8,
     reviews: 1234,
     category: "کنسول بازی",
-    isSale: true
+    isSale: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 17,
@@ -243,16 +255,22 @@ const categories = [
 
 export default function ProductGrid({ selectedCategory }: ProductGridProps) {
   const [favorites, setFavorites] = useState<number[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  // حل مشکل Hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // اسکرول به دسته‌بندی انتخاب شده
   useEffect(() => {
-    if (selectedCategory) {
+    if (selectedCategory && mounted) {
       const categorySection = document.getElementById(`category-${selectedCategory}`);
       if (categorySection) {
         categorySection.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, mounted]);
 
   const toggleFavorite = (productId: number) => {
     setFavorites(prev => 
@@ -269,6 +287,23 @@ export default function ProductGrid({ selectedCategory }: ProductGridProps) {
   const formatPrice = (price: number) => {
     return price.toLocaleString('fa-IR');
   };
+
+  // اگر هنوز mount نشده، loading نمایش بده
+  if (!mounted) {
+    return (
+      <section id="products" className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">محصولات ما</h2>
+            <p className="text-gray-600">مجموعه کاملی از بهترین محصولات</p>
+          </div>
+          <div className="flex justify-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="products" className="py-8 bg-white">

@@ -4,19 +4,19 @@ import Footer from '@/components/Footer';
 
 // Mock data - در واقعیت این داده‌ها از API یا دیتابیس می‌آیند
 const products = [
-  {
+    {
     id: 1,
-    name: "گوشی سامسونگ Galaxy S23",
+    name: "گوشی سامسونگ Galaxy S24",
     price: 45000000,
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.8,
     reviews: 1247,
     category: "گوشی موبایل",
-          discount: {
-        percentage: 15,
-        endTime: new Date('2024-12-31T23:59:59')
-      },
+    discount: {
+      percentage: 15,
+      endTime: new Date('2024-12-31T23:59:59')
+    },
     description: "گوشی سامسونگ Galaxy S23 با پردازنده قدرتمند و دوربین پیشرفته، یکی از بهترین گوشی‌های اندروید است. این گوشی با طراحی زیبا و عملکرد فوق‌العاده، تجربه کاربری بی‌نظیری را ارائه می‌دهد.",
     features: [
       "پردازنده Snapdragon 8 Gen 2",
@@ -52,6 +52,10 @@ const products = [
     reviews: 892,
     category: "گوشی موبایل",
     isNew: true,
+    discount: {
+      percentage: 10,
+      endTime: new Date('2024-12-31T23:59:59')
+    },
     description: "آیفون 15 Pro با پردازنده A17 Pro و دوربین 48 مگاپیکسلی، جدیدترین و پیشرفته‌ترین گوشی اپل است. این گوشی با طراحی زیبا و عملکرد فوق‌العاده، تجربه کاربری بی‌نظیری را ارائه می‌دهد.",
     features: [
       "پردازنده A17 Pro",
@@ -120,6 +124,10 @@ const products = [
     reviews: 892,
     category: "لپ تاپ",
     isNew: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    },
     description: "لپ‌تاپ اپل MacBook Pro با پردازنده M2 Pro و طراحی زیبا، یکی از قدرتمندترین لپ‌تاپ‌های موجود است. این لپ‌تاپ با عملکرد فوق‌العاده و عمر باتری طولانی، برای کارهای حرفه‌ای ایده‌آل است.",
     features: [
       "پردازنده Apple M2 Pro",
@@ -340,6 +348,136 @@ const products = [
       "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1510127034890-ba275aee457a?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=300&fit=crop"
+    ]
+  },
+  {
+    id: 15,
+    name: "دوربین Nikon Z6",
+    price: 65000000,
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
+    rating: 4.6,
+    reviews: 234,
+    category: "دوربین",
+    description: "دوربین Nikon Z6 با سنسور 24.5 مگاپیکسلی و قابلیت‌های پیشرفته عکاسی. این دوربین با لنزهای Z-mount و سیستم فوکوس خودکار پیشرفته، امکان ثبت تصاویر با کیفیت بالا را فراهم می‌کند.",
+    features: [
+      "سنسور 24.5 مگاپیکسلی",
+      "لنز Z-mount",
+      "فیلم 4K",
+      "نمایشگر چرخان",
+      "WiFi و بلوتوث",
+      "باتری با عمر طولانی"
+    ],
+    specifications: {
+      "سنسور": "24.5 مگاپیکسل Full Frame",
+      "لنز": "Z-mount",
+      "فیلم": "4K 30fps",
+      "نمایشگر": "3.2 اینچ چرخان",
+      "وزن": "675 گرم",
+      "باتری": "EN-EL15b"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1510127034890-ba275aee457a?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=300&fit=crop"
+    ]
+  },
+  {
+    id: 16,
+    name: "کنسول PlayStation 5",
+    price: 25000000,
+    originalPrice: 28000000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.8,
+    reviews: 1234,
+    category: "کنسول بازی",
+    isSale: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    },
+    description: "کنسول PlayStation 5 نسل جدید با پردازنده قدرتمند و گرافیک پیشرفته. این کنسول با قابلیت‌های Ray Tracing و SSD فوق‌سریع، تجربه بازی بی‌نظیری را ارائه می‌دهد.",
+    features: [
+      "پردازنده AMD Zen 2",
+      "گرافیک AMD RDNA 2",
+      "SSD 825GB",
+      "Ray Tracing",
+      "4K Gaming",
+      "DualSense Controller"
+    ],
+    specifications: {
+      "پردازنده": "AMD Zen 2 8-core",
+      "گرافیک": "AMD RDNA 2",
+      "رم": "16GB GDDR6",
+      "هارد": "825GB SSD",
+      "رزولوشن": "4K 120fps",
+      "کنترلر": "DualSense"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop"
+    ]
+  },
+  {
+    id: 17,
+    name: "کنسول Xbox Series X",
+    price: 22000000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.7,
+    reviews: 987,
+    category: "کنسول بازی",
+    description: "کنسول Xbox Series X با قدرت پردازشی فوق‌العاده و قابلیت‌های پیشرفته بازی. این کنسول با Quick Resume و Smart Delivery، تجربه بازی نسل بعدی را ارائه می‌دهد.",
+    features: [
+      "پردازنده AMD Zen 2",
+      "گرافیک AMD RDNA 2",
+      "SSD 1TB",
+      "Quick Resume",
+      "4K Gaming",
+      "Xbox Game Pass"
+    ],
+    specifications: {
+      "پردازنده": "AMD Zen 2 8-core",
+      "گرافیک": "AMD RDNA 2",
+      "رم": "16GB GDDR6",
+      "هارد": "1TB SSD",
+      "رزولوشن": "4K 120fps",
+      "کنترلر": "Xbox Wireless Controller"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop"
+    ]
+  },
+  {
+    id: 18,
+    name: "کنسول Nintendo Switch",
+    price: 8500000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.5,
+    reviews: 1567,
+    category: "کنسول بازی",
+    description: "کنسول Nintendo Switch با طراحی منحصر به فرد و قابلیت بازی در هر مکان. این کنسول با کنترلرهای Joy-Con و کتابخانه بازی‌های محبوب، تجربه بازی متفاوتی را ارائه می‌دهد.",
+    features: [
+      "طراحی هیبریدی",
+      "کنترلر Joy-Con",
+      "نمایشگر 6.2 اینچ",
+      "باتری 6 ساعته",
+      "Nintendo eShop",
+      "Multiplayer"
+    ],
+    specifications: {
+      "پردازنده": "NVIDIA Tegra X1",
+      "نمایشگر": "6.2 اینچ LCD",
+      "رم": "4GB",
+      "هارد": "32GB",
+      "باتری": "6 ساعت",
+      "کنترلر": "Joy-Con"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop"
     ]
   }
 ];

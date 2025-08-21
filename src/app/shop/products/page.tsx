@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Filter, Search, Grid, List } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import Header from '@/components/Header';
@@ -10,19 +10,24 @@ import ClientOnly from '@/components/ClientOnly';
 
 const categories = [
   { id: 'all', name: 'همه محصولات' },
-  { id: 'electronics', name: 'الکترونیک' },
+  { id: 'گوشی موبایل', name: 'گوشی موبایل' },
+  { id: 'لپ تاپ', name: 'لپ تاپ' },
+  { id: 'هدفون', name: 'هدفون' },
+  { id: 'ساعت هوشمند', name: 'ساعت هوشمند' },
+  { id: 'دوربین', name: 'دوربین' },
+  { id: 'کنسول بازی', name: 'کنسول بازی' },
 ];
 
 const products = [
   {
     id: 1,
-    name: "گوشی سامسونگ Galaxy S23",
+    name: "گوشی سامسونگ Galaxy S24",
     price: 45000000,
     originalPrice: 52000000,
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.8,
     reviews: 1247,
-    category: "electronics",
+    category: "گوشی موبایل",
     discount: {
       percentage: 15,
       endTime: new Date('2024-12-31T23:59:59')
@@ -36,8 +41,12 @@ const products = [
     image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop",
     rating: 4.9,
     reviews: 892,
-    category: "electronics",
-    isNew: true
+    category: "گوشی موبایل",
+    isNew: true,
+    discount: {
+      percentage: 10,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 3,
@@ -46,7 +55,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     rating: 4.6,
     reviews: 567,
-    category: "electronics"
+    category: "گوشی موبایل"
   },
   {
     id: 4,
@@ -56,8 +65,12 @@ const products = [
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.9,
     reviews: 892,
-    category: "electronics",
-    isNew: true
+    category: "لپ تاپ",
+    isNew: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
   },
   {
     id: 5,
@@ -67,7 +80,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
     rating: 4.8,
     reviews: 124,
-    category: "electronics",
+    category: "لپ تاپ",
     discount: {
       percentage: 20,
       endTime: new Date('2024-12-25T23:59:59')
@@ -80,7 +93,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
     rating: 4.7,
     reviews: 234,
-    category: "electronics"
+    category: "لپ تاپ"
   },
   {
     id: 7,
@@ -90,7 +103,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.7,
     reviews: 2156,
-    category: "electronics",
+    category: "هدفون",
     discount: {
       percentage: 25,
       endTime: new Date('2024-12-20T23:59:59')
@@ -103,7 +116,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.6,
     reviews: 1890,
-    category: "electronics"
+    category: "هدفون"
   },
   {
     id: 9,
@@ -112,7 +125,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     rating: 4.5,
     reviews: 1234,
-    category: "electronics"
+    category: "هدفون"
   },
   {
     id: 10,
@@ -122,7 +135,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.6,
     reviews: 1567,
-    category: "electronics",
+    category: "ساعت هوشمند",
     discount: {
       percentage: 18,
       endTime: new Date('2024-12-28T23:59:59')
@@ -135,7 +148,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.4,
     reviews: 890,
-    category: "electronics"
+    category: "ساعت هوشمند"
   },
   {
     id: 12,
@@ -144,7 +157,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     rating: 4.8,
     reviews: 567,
-    category: "electronics"
+    category: "ساعت هوشمند"
   },
   {
     id: 13,
@@ -154,7 +167,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.9,
     reviews: 203,
-    category: "electronics",
+    category: "دوربین",
     discount: {
       percentage: 12,
       endTime: new Date('2024-12-30T23:59:59')
@@ -167,7 +180,49 @@ const products = [
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
     rating: 4.7,
     reviews: 156,
-    category: "electronics"
+    category: "دوربین"
+  },
+  {
+    id: 15,
+    name: "دوربین Nikon Z6",
+    price: 65000000,
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
+    rating: 4.6,
+    reviews: 234,
+    category: "دوربین"
+  },
+  {
+    id: 16,
+    name: "کنسول PlayStation 5",
+    price: 25000000,
+    originalPrice: 28000000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.8,
+    reviews: 1234,
+    category: "کنسول بازی",
+    isSale: true,
+    discount: {
+      percentage: 11,
+      endTime: new Date('2024-12-31T23:59:59')
+    }
+  },
+  {
+    id: 17,
+    name: "کنسول Xbox Series X",
+    price: 22000000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.7,
+    reviews: 987,
+    category: "کنسول بازی"
+  },
+  {
+    id: 18,
+    name: "کنسول Nintendo Switch",
+    price: 8500000,
+    image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop",
+    rating: 4.5,
+    reviews: 1567,
+    category: "کنسول بازی"
   }
 ];
 
@@ -176,35 +231,43 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('name');
+  const [mounted, setMounted] = useState(false);
+
+  // حل مشکل Hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+
 
   // Mock discount offers for products page
   const discountOffers = useMemo(() => [
     {
       id: 1,
-      title: "تخفیف ویژه محصولات الکترونیک",
-      description: "تا 25% تخفیف روی تمام محصولات الکترونیک",
-      discount: 25,
+      title: "تخفیف ویژه گوشی‌های سامسونگ",
+      description: "تا 15% تخفیف روی تمام گوشی‌های سامسونگ",
+      discount: 15,
       endTime: new Date('2024-12-31T23:59:59'),
       image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
-      category: "الکترونیک"
+      category: "گوشی موبایل"
     },
     {
       id: 2,
-      title: "تخفیف هدفون‌های حرفه‌ای",
-      description: "تا 30% تخفیف روی هدفون‌های Sony و Bose",
-      discount: 30,
+      title: "تخفیف لپ‌تاپ‌های گیمینگ",
+      description: "تا 20% تخفیف روی لپ‌تاپ‌های ASUS",
+      discount: 20,
       endTime: new Date('2024-12-25T23:59:59'),
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
-      category: "هدفون"
+      image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop",
+      category: "لپ تاپ"
     },
     {
       id: 3,
-      title: "تخفیف دوربین‌های حرفه‌ای",
-      description: "تا 15% تخفیف روی دوربین‌های Canon و Sony",
-      discount: 15,
-      endTime: new Date('2024-12-28T23:59:59'),
-      image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
-      category: "دوربین"
+      title: "تخفیف هدفون‌های Sony",
+      description: "تا 25% تخفیف روی هدفون‌های Sony",
+      discount: 25,
+      endTime: new Date('2024-12-20T23:59:59'),
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
+      category: "هدفون"
     }
   ], []);
 
@@ -227,6 +290,23 @@ export default function ProductsPage() {
     }
   });
 
+  // اگر هنوز mount نشده، loading نمایش بده
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <main>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600"></div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -234,7 +314,7 @@ export default function ProductsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">محصولات</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">محصولات</h1>
             <p className="text-gray-700">مجموعه‌ای از بهترین محصولات را مشاهده کنید</p>
           </div>
 
@@ -333,7 +413,7 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <div className={
           viewMode === 'grid' 
-            ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+            ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6'
             : 'space-y-4'
         }>
           {sortedProducts.map((product) => (

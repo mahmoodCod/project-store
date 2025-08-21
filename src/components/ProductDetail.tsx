@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Heart, Star, Truck, Shield, ArrowLeft, Share2, Eye, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import DiscountBadge from './DiscountBadge';
 import ClientOnly from './ClientOnly';
 
@@ -88,9 +89,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {/* Product Images */}
           <div className="space-y-4">
             <div className="relative">
-              <img
+              <Image
                 src={images[selectedImage]}
                 alt={product.name}
+                width={800}
+                height={384}
                 className="w-full h-96 object-cover rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={() => setIsImageModalOpen(true)}
               />
@@ -123,9 +126,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     }`}
                     aria-label={`تصویر ${index + 1} از ${product.name}`}
                   >
-                    <img
+                    <Image
                       src={image}
                       alt={`${product.name} ${index + 1}`}
+                      width={80}
+                      height={80}
                       className="w-full h-full object-cover"
                     />
                   </button>
@@ -153,7 +158,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 )}
               </div>
               
-              <h1 className="text-xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-lg md:text-xl font-bold text-gray-900 mb-4">{product.name}</h1>
               
               <div className="flex items-center space-x-4 space-x-reverse mb-4">
                 <div className="flex items-center">
@@ -175,7 +180,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* Price */}
             <div className="space-y-2">
               <div className="flex items-center space-x-4 space-x-reverse">
-                <span className="text-xl font-bold text-gray-900">
+                <span className="text-lg md:text-xl font-bold text-gray-900">
                   {formatPrice(product.price)} تومان
                 </span>
                 {product.originalPrice && (
@@ -433,9 +438,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
 
             {/* Main Image */}
-            <img
+            <Image
               src={images[selectedImage]}
               alt={product.name}
+              width={1200}
+              height={800}
               className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-lg"
             />
 
@@ -458,9 +465,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     }`}
                     aria-label={`تصویر ${index + 1}`}
                   >
-                    <img
+                    <Image
                       src={image}
                       alt={`${product.name} ${index + 1}`}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-cover"
                     />
                   </button>
